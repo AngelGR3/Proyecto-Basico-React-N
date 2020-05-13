@@ -61,7 +61,7 @@ export default class UserList extends React.Component {
                                 onPress={() => {
                                     this.props.navigation.navigate('UserDetails', {
                                         user: item
-                                    });
+                                    })
                                    
                                 }}
                                 style={[styles.itemContainer, item.gender == 'male' ? styles.male : styles.female]}>
