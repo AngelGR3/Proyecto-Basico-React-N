@@ -14,11 +14,7 @@ import UserService from '../services/UserService';
 
 export default class UserList extends React.Component {
 
-    static navigationOptions = {
-        title: 'Mi primer app en RN',
-    };
-
-    constructor(props) {
+        constructor(props) {
         super(props);
         this.state = {
             users: null,
@@ -56,15 +52,17 @@ export default class UserList extends React.Component {
                                 <Text style={[styles.title, { marginTop: 10, color: '#0093bf' }]}>Lista de usuarios</Text>
                                 <View style={{ height: 1, backgroundColor: '#0093bf', opacity: .1, width: '50%', alignSelf: 'center', marginVertical: 10 }}></View>
                             </View>
-                        );
+                        )
                     }}
                     data={this.state.users}
                     renderItem={({item}) => {
                         return (
                             <TouchableOpacity
                                 onPress={() => {
-                                    this.props.navigation.navigate('Ventana')
-                                    alert("Al parecer hay un error de libreria https://github.com/react-navigation/react-navigation/issues/6820")
+                                    this.props.navigation.navigate('UserDetails', {
+                                        user: item
+                                    });
+                                   
                                 }}
                                 style={[styles.itemContainer, item.gender == 'male' ? styles.male : styles.female]}>
                                 <Image
@@ -77,11 +75,11 @@ export default class UserList extends React.Component {
                                     <Text style={[styles.itemTitle, { fontSize: 13 }]}>Toca para más detalles</Text>
                                 </View>
                             </TouchableOpacity>
-                        );
+                        )
                     }}
                 />
             </View>
-        );
+        )
     }
 }
 

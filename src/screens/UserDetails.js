@@ -1,3 +1,4 @@
+import { NavigationContainer } from '@react-navigation/native';
 import React, {Component} from 'react';
 import {
     ActivityIndicator,
@@ -9,25 +10,18 @@ import {
     Image
 } from 'react-native';
 
-export default class UserDetails extends React.Component {
-
-    static navigationOptions = ({ navigation }) => {
-        return {
-            title: navigation.getParam('user').name.first.charAt(0).toUpperCase() + navigation.getParam('user').name.first.substring(1, navigation.getParam('user').name.first.length),
-        };
-    };
-
-    constructor(props) {
+export default class UserDetails extends Component {
+        constructor(props) {
         super(props);
         this.state = {
             user: null
-        };
+        }
     }
 
     componentDidMount() {
         this.setState({
-            user: this.props.navigation.state.params.user
-        });
+            user:  this.props.route.params.user
+        })
     }
 
     render() {
@@ -35,7 +29,7 @@ export default class UserDetails extends React.Component {
         if(this.state.user === null) {
             return (
                 <ActivityIndicator />
-            );
+            )
         }
 
         return (
@@ -44,9 +38,9 @@ export default class UserDetails extends React.Component {
                     style={styles.itemImage}
                     source={{ uri : this.state.user.picture.large }}
                 />
-                <Text style={styles.itemText}>Name: {this.state.user.name.first + ' ' + this.state.user.name.last }</Text>
+                <Text style={styles.itemText}>Name: {this.state.user.name.first} {this.state.user.name.last }</Text>
                 <Text style={styles.itemText}>Email: {this.state.user.email }</Text>
-                <Text style={styles.itemText}>Location: {this.state.user.location.street }</Text>
+                <Text style={styles.itemText}>Location: {this.state.user.location.city }</Text>
             </View>
         );
     }
