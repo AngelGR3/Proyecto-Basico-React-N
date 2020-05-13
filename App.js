@@ -11,8 +11,8 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="UserList" component={UserList} />
-        <Stack.Screen name="UserDetails" component={ UserDetails } />
+        <Stack.Screen name="Lista" component={UserList} />
+        <Stack.Screen name="Detalles" component={ UserDetails } />
       </Stack.Navigator>
     </NavigationContainer>
   );
